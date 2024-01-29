@@ -3,6 +3,7 @@ package reflectionUsecase;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.Arrays;
 
 public class JdkProxyDemo {
 
@@ -28,7 +29,10 @@ public class JdkProxyDemo {
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
             System.out.println("BEFORE");
             String d="done";
+            System.out.println(Arrays.toString(args));
             args[2]=d;
+
+            System.out.println(method.getName());
            Object res= method.invoke(original, args);
             System.out.println("AFTER");
             return res;
